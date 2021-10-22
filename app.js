@@ -52,13 +52,60 @@ console.log("Nauji gyvunai: ", document.querySelectorAll(".new").length);
 
 // 3. Elementų events
 // a. Padaryti tai ką liepia mygtukai Header1 sekcijoje; Nudažyti h1 žaliai, Pakeisti h1 fontą į 10px
+const buttonh1Color = document.getElementById("h1-color");
+const h1 = document.querySelector("h1");
+buttonh1Color.addEventListener("click", event => {
+    h1.style.color="green"
+});
+
+const buttonh1Font = document.getElementById("h1-font")
+
+buttonh1Font.addEventListener("click", event => {
+    h1.style.fontSize="10px"
+});
 
 // b. Padaryti, kad paspaudus ant i tago jis pakeistų fonto svorį į bold;
+const tagI = document.querySelector("i");
+tagI.addEventListener("click", event => {
+    tagI.style.fontWeight="bold"
+});
 // c. Padaryti, kad paspaudus ant tago su klase prices, backgroundas pasikeistų į pilką, o paspaudus dar kartą vėl grįžtu į baltą spalvą;
+const pricesTag = document.getElementsByClassName("prices")[0];
+pricesTag.addEventListener("click", event => {
+    if (pricesTag.style.backgroundColor === "grey") {
+        pricesTag.style.backgroundColor = "white"
+    } else {
+        pricesTag.style.backgroundColor = "grey"
+    }
+});
 // d. Padaryti, kad paspaudus ant tago su id contacts, tam tagui būtų pridėta css savybė color = orange;
+const tagContacts = document.getElementById("contacts");
+tagContacts.addEventListener("click", event => {
+    tagContacts.style.color = "orange"
+});
+
 // e. Padaryti taip, kad paspaudus ant padidinti, esančio tage su id contacts, tagui su id contacts būtų pridėta css savybė fontSize = 20px;
+const tagContactsu = document.querySelector("#contacts u");
+tagContactsu.addEventListener("click", event => {
+    tagContactsu.style.fontSize = "20px"
+});
+
 // f. Padaryti taip, kad paspaudus ant X, esančio tage su id contacts, pridėtos tage su id contacts savybės būtų panaikintos https://stackoverflow.com/questions/18691655/remove-style-on-element
+
+document.querySelector("#contacts b").addEventListener("click", event => {
+    tagContacts.style.color = null;
+});
 // g. Padaryti tai ką liepia mygtukai Header2 sekcijoje;
+const buttonColorBack = document.getElementById("h1-color-back");
+buttonColorBack.addEventListener("click", event => {
+    h1.style.color = null;
+});
+
+const buttonFontBack = document.getElementById("h1-font-back");
+buttonFontBack.addEventListener("click", event => {
+    h1.style.fontSize = null;
+});
+
 // 4. Elementų grupių events
 // a. Padaryti, kad dukartus paspaudus ant naujų gyvūnų jie nusispalvintu raudonai https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
 // b. Padaryti, kad paspaudus ant gyvūno jis būtų atvaizduojamas 130% didesniu fonto dydžiu. “PATINKA” tas neturi galioti.
