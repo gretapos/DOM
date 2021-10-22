@@ -13,16 +13,46 @@ document.querySelector("h2> span").style.fontSize="10px";
 document.querySelector("h2> span").style.color="grey";
 // 2.Elemetų grupės (nodeList) skaičiavimus išvest į consolę
 // a. Suskaičiuoti kiek yra h2 tagų;
+console.log("h2 tag skaicius: ", document.querySelectorAll("h2").length);
 // b. Suskaičiuoti kiek yra h2 tagų, kurie neturi klasės first
+console.log("h2 tag skaicius be first klases: ", document.querySelectorAll("h2").length - document.querySelectorAll("h2.first").length);
 // c. Visus h2 tagus nuspalvinti šviesiai mėlynai
+document.querySelectorAll("h2").forEach(element => element.style.color = "lightblue");
 // d. Tagų, kurie yra div su klase prices, viduje esantiems h2 tagams pridėti klasę price-tag;
+document.querySelectorAll("div.prices > h2").forEach(element => element.classList.add("price-tag"));
 // e. Pabraukti visus tagus su klase new;
+document.querySelectorAll(".new").forEach(element => element.style.textDecoration = "underline");
 // f. Suskaičiuoti kiek yra gyvūnų kategorijų ir žirafų (jos yra ul tagai);
+console.log("Gyvunu kategorijos: ", document.querySelectorAll("ul").length);
+    const zirafos = [];
+    document.querySelectorAll("li").forEach(element => {
+        if(element.textContent.search("Žirafa") >= 0 )
+            zirafos.push(element.textContent);
+    });
+    console.log("Zirafu skaicius: ", zirafos.length);
 // g. Tagus ul apibraukite rėmeliais ir uždėkite 15px paddingą viršuje ir apačioje ir 50px paddingą kairėje ir dešinėje;
+document.querySelectorAll("ul").forEach(element => {
+    element.style.border = '1px solid pink';
+    element.style.padding = '15px 50px';
+})
 // h. Suskaičiuoti kiek yra naujų gyvūnų (su klase new);
+console.log("Nauji gyvunai: ", document.querySelectorAll(".new").length);
 // i. Suskaičiuoti atskirai kiek yra naujų gyvūnų kiekvienoje kategorijoje;
+    document.querySelectorAll("ul").forEach(element => {
+        const naujas =[];
+        console.log(element.id.toUpperCase());
+
+        element.querySelectorAll(".new").forEach(e => {
+            naujas.push(e.textContent);
+            console.log(e.textContent);
+        })
+        console.log("kiek yra naujų gyvūnų: ", naujas.length);
+    })
+
+
 // 3. Elementų events
-// a. Padaryti tai ką liepia mygtukai Header1 sekcijoje;
+// a. Padaryti tai ką liepia mygtukai Header1 sekcijoje; Nudažyti h1 žaliai, Pakeisti h1 fontą į 10px
+
 // b. Padaryti, kad paspaudus ant i tago jis pakeistų fonto svorį į bold;
 // c. Padaryti, kad paspaudus ant tago su klase prices, backgroundas pasikeistų į pilką, o paspaudus dar kartą vėl grįžtu į baltą spalvą;
 // d. Padaryti, kad paspaudus ant tago su id contacts, tam tagui būtų pridėta css savybė color = orange;
