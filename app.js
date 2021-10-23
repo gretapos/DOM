@@ -111,7 +111,7 @@ buttonFontBack.addEventListener("click", event => {
 const newAnimals = document.querySelectorAll('ul li.new');
 
 newAnimals.forEach(element => {
-    element.addEventListener('dblclick', function (e) {
+    element.addEventListener("dblclick", function (e) {
         element.style.color="red"
     })
 });
@@ -120,13 +120,13 @@ newAnimals.forEach(element => {
 const Animals = document.querySelectorAll('ul li:not(.like-button)');
 
 Animals.forEach(element => {
-    element.addEventListener('click', function (e) {
+    element.addEventListener("click", function (e) {
         element.style.fontSize="130%"
     })
 });
 
 // c. Padaryti, kad paspaudus ant “PATINKA”, atitinkamai sekcijai būtų priskirta klasė like;
-const like = document.querySelectorAll('ul li.like-button');
+const like = document.querySelectorAll("ul li.like-button");
 
 like.forEach(element => {
     element.addEventListener('click', function (e) {
@@ -136,14 +136,55 @@ like.forEach(element => {
 
 // 5. Dinaminis elementų kūrimas (su createElement)
 // a. Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
+let senjorai= document.createElement("h2");
+senjorai.innerText = "Senjorai tik: 1.99 eur";
 
+let priceElement = document.getElementsByClassName("prices")[0];
+priceElement.appendChild(senjorai);
 // b. Dinamiškai su JS Pridėti naują kainą “Senjorų grupė iki 10: tik 5.99 eur” Padaryti, kad pridėtas elementas turėtų klasę new ir ant jo paklikinus jis pasidarytų žalias;
+let senjorai2= document.createElement("h2");
+senjorai2.innerText = "Senjorų grupė iki 10: tik 5.99 eur";
+senjorai2.classList.add("new")
+let priceElement2 = document.getElementsByClassName("prices")[0];
+priceElement2.appendChild(senjorai2);
+senjorai2.addEventListener("click", function (e) {
+    senjorai2.style.color="green"
+})
 
 // c. Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, kurį paspaudus atitinkamoje sekcijoje būtų nuimta klasė like
+document.querySelectorAll('ul').forEach(element => {
+    const likeMygtukas = element.querySelector('.like-button');
+    const nepatinka = document.createElement('li');
+    nepatinka.innerText = "NEPATINKA";
+    nepatinka.addEventListener('click', function (e) {
+        element.classList.remove('like')
+    });
+    likeMygtukas.after(nepatinka);
+});
 
 // d. Dinamiškai su JS sukurkite naują mygtukų grupę HEADER 3 naudojant analogišką html tagų struktūrą kaip ir HEADER 1 ir HEADER 2. Pirmas mygtukas vadintųsi, “Pabraukti H1 tagą”, o antras “Nepabraukti H1 tagą”. Mygtukai turi daryti tai kas ant jų parašyta
 
+const grupe = document.createElement('fieldset');
 
+const legend = document.createElement('legend');
+legend.innerText='HEADER 3';
 
+const mygtukas1 = document.createElement('button');
+mygtukas1.innerText = 'Pabraukti H1 tagą';
 
+const mygtukas2 = document.createElement('button');
+mygtukas2.innerText = 'Nepabraukti H1 tagą';
 
+grupe.appendChild(legend);
+grupe.appendChild(mygtukas1);
+grupe.appendChild(mygtukas2);
+
+document.getElementById('contacts').before(grupe);
+
+mygtukas1.addEventListener('click', function (e) {
+    document.querySelector('h1').style.textDecoration = 'underline';
+});
+
+mygtukas2.addEventListener('click', function (e) {
+    document.querySelector('h1').style.textDecoration = 'none';
+});
