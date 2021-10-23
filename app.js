@@ -108,13 +108,41 @@ buttonFontBack.addEventListener("click", event => {
 
 // 4. Elementų grupių events
 // a. Padaryti, kad dukartus paspaudus ant naujų gyvūnų jie nusispalvintu raudonai https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
+const newAnimals = document.querySelectorAll('ul li.new');
+
+newAnimals.forEach(element => {
+    element.addEventListener('dblclick', function (e) {
+        element.style.color="red"
+    })
+});
+
 // b. Padaryti, kad paspaudus ant gyvūno jis būtų atvaizduojamas 130% didesniu fonto dydžiu. “PATINKA” tas neturi galioti.
+const Animals = document.querySelectorAll('ul li:not(.like-button)');
+
+Animals.forEach(element => {
+    element.addEventListener('click', function (e) {
+        element.style.fontSize="130%"
+    })
+});
+
 // c. Padaryti, kad paspaudus ant “PATINKA”, atitinkamai sekcijai būtų priskirta klasė like;
+const like = document.querySelectorAll('ul li.like-button');
+
+like.forEach(element => {
+    element.addEventListener('click', function (e) {
+        element.parentElement.classList.add("like")
+    })
+});
+
 // 5. Dinaminis elementų kūrimas (su createElement)
 // a. Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
+
 // b. Dinamiškai su JS Pridėti naują kainą “Senjorų grupė iki 10: tik 5.99 eur” Padaryti, kad pridėtas elementas turėtų klasę new ir ant jo paklikinus jis pasidarytų žalias;
+
 // c. Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, kurį paspaudus atitinkamoje sekcijoje būtų nuimta klasė like
+
 // d. Dinamiškai su JS sukurkite naują mygtukų grupę HEADER 3 naudojant analogišką html tagų struktūrą kaip ir HEADER 1 ir HEADER 2. Pirmas mygtukas vadintųsi, “Pabraukti H1 tagą”, o antras “Nepabraukti H1 tagą”. Mygtukai turi daryti tai kas ant jų parašyta
+
 
 
 
